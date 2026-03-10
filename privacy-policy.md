@@ -36,5 +36,5 @@ We may update this policy from time to time. Changes will be reflected in the ef
 If you have any questions about this privacy policy, please contact:
 
 **Adriano Santos**
-adrianosantostreina@gmail.com
+adrianosantospro@gmail.com
 [github.com/adrianosantostreina](https://github.com/adrianosantostreina)
