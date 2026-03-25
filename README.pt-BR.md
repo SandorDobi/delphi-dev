@@ -49,6 +49,12 @@ Após rodar `/plugin install`, um menu aparece pedindo o escopo da instalação:
 > git config --global url."https://github.com/".insteadOf git@github.com:
 > ```
 
+**Desinstalando:**
+```bash
+/plugin uninstall delphi-dev
+/plugin marketplace remove delphi-dev
+```
+
 ---
 
 ## Padrões Aplicados Automaticamente
