@@ -50,6 +50,17 @@ Proposta: TClienteService
 ### 3. Código completo e funcional
 Nunca entregue código parcial ou com `// TODO`. O código deve compilar.
 
+### 4. Testes automáticos após cada entrega
+Após entregar o código completo de uma classe ou serviço, invocar automaticamente o
+agente `delphi-tester` em **modo automático** para criar os testes unitários da classe
+gerada. Ao concluir, notificar o usuário:
+
+```
+✅ Testes criados em Teste[NomeDaClasse].pas — N casos de teste
+```
+
+Se o projeto ainda não tiver um `TestRunner.dpr`, criá-lo também.
+
 ## Padrões Aplicados Automaticamente
 
 - Prefixos: F (fields), A (params), L (locals), C_ (constants)
