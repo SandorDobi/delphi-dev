@@ -7,19 +7,22 @@
 
 ## What is it
 
-**delphi-dev** automatically activates whenever Claude Code detects Delphi-related content — `.pas`, `.dpr`, `.dfm`, `.dpk`, `.dproj` files, or any mention of Object Pascal, FireMonkey, VCL, FireDAC, or RAD Studio. Once active, Claude applies the full Delphi Style Guide, Clean Code principles, and SOLID patterns without being asked.
+**delphi-dev** activates automatically whenever Claude Code detects Delphi-related content — `.pas`, `.dpr`, `.dfm`, `.dpk`, `.dproj` files, or any mention of Object Pascal, FireMonkey, VCL, FireDAC, or RAD Studio. Once active, Claude applies the full Delphi Style Guide, Clean Code principles, and SOLID patterns without being asked.
 
 ---
 
 ## Features
 
-| Feature | Description |
+| Command | Description |
 |---|---|
-| **Auto Delphi Mode** | Opening any `.pas`, `.dpr`, or `.dfm` file activates the full coding standards context automatically |
-| **`/delphi-audit`** | Generates a complete professional technical audit with per-dimension scoring and a prioritized modernization roadmap |
-| **`/delphi-review`** | Quick code review — detects violations and provides corrected examples |
-| **`/delphi-write`** | Writes new code with all standards applied from the start |
-| **`/delphi-new`** | Scaffolds a new project with standardized layered folder structure |
+| **Auto Delphi Mode** | Opening any `.pas`, `.dpr` or `.dfm` file activates the full coding standards context automatically |
+| **`/audit`** | Generates a complete professional technical audit with per-dimension scoring and a prioritized modernization roadmap |
+| **`/review`** | Quick code review — detects violations and provides corrected examples |
+| **`/write`** | Writes new code with all standards applied from the start |
+| **`/new-project`** | Scaffolds a new project with standardized layered folder structure |
+| **`/spec`** | Analyzes the current project source code and auto-generates a complete `SPEC.md` |
+| **`/tdd`** | Generates a complete DUnitX unit test suite for the project |
+| **`/about`** | Displays plugin info, version, and available commands |
 
 ---
 
@@ -36,7 +39,13 @@
 /plugin install delphi-dev@delphi-dev
 ```
 
-After running `/plugin install`, a menu will appear asking for the installation scope:
+**Via terminal (CLI):**
+```bash
+claude plugin marketplace add adrianosantostreina/delphi-dev
+claude plugin install delphi-dev@delphi-dev
+```
+
+After running the install command, a menu will appear asking for the installation scope:
 
 | Option | When to use |
 |---|---|
@@ -55,6 +64,12 @@ After running `/plugin install`, a menu will appear asking for the installation 
 ```bash
 /plugin uninstall delphi-dev
 /plugin marketplace remove delphi-dev
+```
+
+Or via CLI:
+```bash
+claude plugin uninstall delphi-dev
+claude plugin marketplace remove delphi-dev
 ```
 
 ---
@@ -97,11 +112,14 @@ After running `/plugin install`, a menu will appear asking for the installation 
 
 ## Included Skills
 
-| Skill | Trigger |
+| Skill | Activation |
 |---|---|
 | `delphi-standards` | Auto-activated on Delphi file/code detection |
 | `delphi-write` | Activated when writing new Delphi code |
-| `delphi-laudo` | Activated by `/delphi-audit` command |
+| `delphi-laudo` | Activated by the `/audit` command |
+| `delphi-spec` | Activated by the `/spec` command |
+| `delphi-testes` | Activated by the `/tdd` command or automatically after `delphi-write` |
+| `delphi-claudeignore` | Auto-activated on Delphi project detection to optimize token usage |
 
 ---
 
@@ -111,6 +129,8 @@ After running `/plugin install`, a menu will appear asking for the installation 
 |---|---|
 | `delphi-auditor` | Deep technical audit — 8 dimensions, scoring, 17-section report |
 | `delphi-writer` | Writes complete, production-ready Delphi code following all standards |
+| `delphi-spec-writer` | Generates the SPEC document from source code analysis |
+| `delphi-tester` | Creates DUnitX unit test suites for Delphi classes |
 
 ---
 

@@ -13,13 +13,16 @@
 
 ## Funcionalidades
 
-| Recurso | Descrição |
+| Comando | Descrição |
 |---|---|
 | **Modo Delphi Automático** | Ao abrir qualquer arquivo `.pas`, `.dpr` ou `.dfm`, o contexto completo de padrões de codificação é ativado automaticamente |
-| **`/delphi-audit`** | Gera laudo técnico profissional completo com score por dimensão e roadmap de modernização priorizado |
-| **`/delphi-review`** | Revisão rápida de código — detecta violações e apresenta exemplos corrigidos |
-| **`/delphi-write`** | Escreve código novo com todos os padrões aplicados desde o início |
-| **`/delphi-new`** | Scaffold de novo projeto com estrutura de pastas em camadas padronizada |
+| **`/audit`** | Gera laudo técnico profissional completo com score por dimensão e roadmap de modernização priorizado |
+| **`/review`** | Revisão rápida de código — detecta violações e apresenta exemplos corrigidos |
+| **`/write`** | Escreve código novo com todos os padrões aplicados desde o início |
+| **`/new-project`** | Scaffold de novo projeto com estrutura de pastas em camadas padronizada |
+| **`/spec`** | Analisa o código-fonte do projeto atual e gera automaticamente um `SPEC.md` completo |
+| **`/tdd`** | Gera suite completa de testes unitários DUnitX para o projeto |
+| **`/about`** | Exibe informações do plugin, versão e comandos disponíveis |
 
 ---
 
@@ -36,7 +39,13 @@
 /plugin install delphi-dev@delphi-dev
 ```
 
-Após rodar `/plugin install`, um menu aparece pedindo o escopo da instalação:
+**Via terminal (CLI):**
+```bash
+claude plugin marketplace add adrianosantostreina/delphi-dev
+claude plugin install delphi-dev@delphi-dev
+```
+
+Após rodar o comando de instalação, um menu aparece pedindo o escopo da instalação:
 
 | Opção | Quando usar |
 |---|---|
@@ -55,6 +64,12 @@ Após rodar `/plugin install`, um menu aparece pedindo o escopo da instalação:
 ```bash
 /plugin uninstall delphi-dev
 /plugin marketplace remove delphi-dev
+```
+
+Ou via CLI:
+```bash
+claude plugin uninstall delphi-dev
+claude plugin marketplace remove delphi-dev
 ```
 
 ---
@@ -101,7 +116,10 @@ Após rodar `/plugin install`, um menu aparece pedindo o escopo da instalação:
 |---|---|
 | `delphi-standards` | Ativada automaticamente ao detectar arquivo/código Delphi |
 | `delphi-write` | Ativada ao escrever código Delphi novo |
-| `delphi-laudo` | Ativada pelo comando `/delphi-audit` |
+| `delphi-laudo` | Ativada pelo comando `/audit` |
+| `delphi-spec` | Ativada pelo comando `/spec` |
+| `delphi-testes` | Ativada pelo comando `/tdd` ou automaticamente após o `delphi-write` |
+| `delphi-claudeignore` | Ativada automaticamente ao detectar projeto Delphi para otimizar tokens |
 
 ---
 
@@ -111,6 +129,8 @@ Após rodar `/plugin install`, um menu aparece pedindo o escopo da instalação:
 |---|---|
 | `delphi-auditor` | Auditoria técnica profunda — 8 dimensões, pontuação, laudo com 17 seções |
 | `delphi-writer` | Escreve código Delphi completo e pronto para produção seguindo todos os padrões |
+| `delphi-spec-writer` | Gera o documento SPEC a partir da análise do código-fonte |
+| `delphi-tester` | Cria suites de testes unitários DUnitX para classes Delphi |
 
 ---
 
