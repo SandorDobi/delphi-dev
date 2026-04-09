@@ -1,216 +1,216 @@
-# Template: Documento de Especificacao de Software (SPEC)
+# Template: Software Specification Document (SPEC)
 
 ---
 
-## SECAO 1 — Identificacao do Projeto
+## SECTION 1 — Project Identification
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Nome do Sistema | |
-| Modulo / Subsistema | |
-| Versao da SPEC | 1.0 |
-| Data de Criacao | |
-| Autor | |
-| Revisado por | |
-| Status | Rascunho / Em revisao / Aprovado |
+| System Name | |
+| Module / Subsystem | |
+| SPEC Version | 1.0 |
+| Creation Date | |
+| Author | |
+| Reviewed by | |
+| Status | Draft / Under Review / Approved |
 
 ---
 
-## SECAO 2 — Objetivo e Escopo
+## SECTION 2 — Objective and Scope
 
-### 2.1 Objetivo
-Descreva em 2-4 frases qual problema este sistema/modulo resolve e qual e o resultado esperado.
+### 2.1 Objective
+Describe in 2-4 sentences what problem this system/module solves and what the expected outcome is.
 
-### 2.2 Escopo (o que esta incluido)
+### 2.2 Scope (what is included)
 - Item 1
 - Item 2
 
-### 2.3 Fora do Escopo (o que NAO esta incluido)
+### 2.3 Out of Scope (what is NOT included)
 - Item 1
 - Item 2
 
 ---
 
-## SECAO 3 — Atores e Perfis de Usuario
+## SECTION 3 — Actors and User Profiles
 
-Liste todos os usuarios/sistemas que interagem com o software.
+List all users/systems that interact with the software.
 
-| ID | Ator | Descricao | Permissoes |
+| ID | Actor | Description | Permissions |
 |---|---|---|---|
 | AT-001 | | | |
 | AT-002 | | | |
 
 ---
 
-## SECAO 4 — Requisitos Funcionais
+## SECTION 4 — Functional Requirements
 
-O que o sistema **deve fazer**. Um requisito por linha, numerado.
+What the system **must do**. One requirement per line, numbered.
 
-| ID | Descricao | Prioridade | Ator | Observacoes |
+| ID | Description | Priority | Actor | Notes |
 |---|---|---|---|---|
-| RF-001 | | Alta / Media / Baixa | | |
-| RF-002 | | | | |
+| FR-001 | | High / Medium / Low | | |
+| FR-002 | | | | |
 
-**Prioridades:**
-- Alta: essencial para o funcionamento basico
-- Media: importante mas pode ser entregue em fase posterior
-- Baixa: desejavel, pode ser descartado se necessario
+**Priorities:**
+- High: essential for basic functionality
+- Medium: important but can be delivered in a later phase
+- Low: desirable, can be discarded if necessary
 
 ---
 
-## SECAO 5 — Requisitos Nao Funcionais
+## SECTION 5 — Non-Functional Requirements
 
-Restricoes de qualidade, performance, seguranca e conformidade.
+Quality, performance, security, and compliance constraints.
 
-| ID | Categoria | Descricao | Criterio de Aceitacao |
+| ID | Category | Description | Acceptance Criteria |
 |---|---|---|---|
-| RNF-001 | Performance | | |
-| RNF-002 | Seguranca | | |
-| RNF-003 | Disponibilidade | | |
-| RNF-004 | Usabilidade | | |
-| RNF-005 | Compatibilidade | | |
+| NFR-001 | Performance | | |
+| NFR-002 | Security | | |
+| NFR-003 | Availability | | |
+| NFR-004 | Usability | | |
+| NFR-005 | Compatibility | | |
 
-**Categorias comuns:** Performance, Seguranca, Disponibilidade, Usabilidade, Compatibilidade,
-Manutenibilidade, Escalabilidade, Conformidade Legal.
+**Common categories:** Performance, Security, Availability, Usability, Compatibility,
+Maintainability, Scalability, Legal Compliance.
 
 ---
 
-## SECAO 6 — Casos de Uso
+## SECTION 6 — Use Cases
 
-### UC-001: [Nome do Caso de Uso]
+### UC-001: [Use Case Name]
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
 | ID | UC-001 |
-| Nome | |
-| Ator Principal | |
-| Pre-condicoes | |
-| Pos-condicoes | |
+| Name | |
+| Primary Actor | |
+| Pre-conditions | |
+| Post-conditions | |
 | Trigger | |
 
-**Fluxo Principal:**
-1. Passo 1
-2. Passo 2
-3. Passo 3
+**Main Flow:**
+1. Step 1
+2. Step 2
+3. Step 3
 
-**Fluxo Alternativo:**
-- 2a. Se [condicao]: ...
+**Alternative Flow:**
+- 2a. If [condition]: ...
 
-**Fluxo de Excecao:**
-- 2b. Se [erro]: ...
+**Exception Flow:**
+- 2b. If [error]: ...
 
 ---
 
-## SECAO 7 — User Stories (opcional / complementar aos casos de uso)
+## SECTION 7 — User Stories (optional / complementary to use cases)
 
-| ID | Como... | Quero... | Para que... | Criterios de Aceitacao |
+| ID | As a... | I want... | So that... | Acceptance Criteria |
 |---|---|---|---|---|
-| US-001 | [ator] | [acao] | [beneficio] | - [ ] criterio 1 |
+| US-001 | [actor] | [action] | [benefit] | - [ ] criterion 1 |
 | US-002 | | | | |
 
 ---
 
-## SECAO 8 — Regras de Negocio
+## SECTION 8 — Business Rules
 
-Restricoes e politicas que o sistema deve respeitar independentemente do fluxo.
+Constraints and policies that the system must respect regardless of the flow.
 
-| ID | Descricao | Origem (lei / politica / cliente) |
+| ID | Description | Origin (law / policy / client) |
 |---|---|---|
-| RN-001 | | |
-| RN-002 | | |
+| BR-001 | | |
+| BR-002 | | |
 
 ---
 
-## SECAO 9 — Fluxos de Tela e Navegacao
+## SECTION 9 — Screen Flows and Navigation
 
-Descreva a sequencia de telas e transicoes. Use diagramas ASCII ou lista de telas se nao houver wireframe.
+Describe the sequence of screens and transitions. Use ASCII diagrams or a screen list if no wireframes exist.
 
-### Mapa de Navegacao
+### Navigation Map
 
 ```
-[Tela Login]
-    └─► [Tela Principal]
-            ├─► [Modulo A]
-            │       └─► [Cadastro]
-            │               └─► [Confirmacao]
-            └─► [Modulo B]
-                    └─► [Listagem]
-                            └─► [Edicao]
+[Login Screen]
+    └─► [Main Screen]
+            ├─► [Module A]
+            │       └─► [Registration]
+            │               └─► [Confirmation]
+            └─► [Module B]
+                    └─► [Listing]
+                            └─► [Editing]
 ```
 
-### Descricao de Telas
+### Screen Descriptions
 
-#### Tela: [Nome]
-- **Proposito:** o que o usuario faz aqui
-- **Campos:** lista de campos com tipo e obrigatoriedade
-- **Acoes:** botoes e suas consequencias
-- **Validacoes:** regras de validacao da tela
-- **Requisitos relacionados:** RF-001, RN-002
+#### Screen: [Name]
+- **Purpose:** what the user does here
+- **Fields:** list of fields with type and required status
+- **Actions:** buttons and their consequences
+- **Validations:** screen validation rules
+- **Related requirements:** FR-001, BR-002
 
 ---
 
-## SECAO 10 — Modelo de Dados
+## SECTION 10 — Data Model
 
-### 10.1 Entidades Principais
+### 10.1 Main Entities
 
-| Entidade | Descricao | Atributos Principais |
+| Entity | Description | Key Attributes |
 |---|---|---|
 | | | |
 
-### 10.2 Relacionamentos
+### 10.2 Relationships
 
 ```
-[Cliente] 1 ──── N [Pedido]
-[Pedido]  1 ──── N [ItemPedido]
-[ItemPedido] N ── 1 [Produto]
+[Customer] 1 ──── N [Order]
+[Order]    1 ──── N [OrderItem]
+[OrderItem] N ── 1 [Product]
 ```
 
-### 10.3 Tabelas / Estruturas de Dados
+### 10.3 Tables / Data Structures
 
-Descreva as tabelas de banco de dados ou estruturas Delphi relevantes para este modulo.
+Describe database tables or relevant Delphi structures for this module.
 
 ---
 
-## SECAO 11 — Integracoes Externas
+## SECTION 11 — External Integrations
 
-| ID | Sistema Externo | Tipo | Protocolo | Direcao | Descricao |
+| ID | External System | Type | Protocol | Direction | Description |
 |---|---|---|---|---|---|
-| INT-001 | | API REST / WebService / DLL | HTTP / TCP / COM | Entrada / Saida | |
+| INT-001 | | API REST / WebService / DLL | HTTP / TCP / COM | Inbound / Outbound | |
 
 ---
 
-## SECAO 12 — Restricoes e Premissas
+## SECTION 12 — Constraints and Assumptions
 
-### 12.1 Restricoes Tecnicas
-- Delphi versao minima: [X]
-- Banco de dados: [nome e versao]
-- Sistema operacional: [Windows / macOS / mobile]
-- Dependencias obrigatorias: [componentes, frameworks]
+### 12.1 Technical Constraints
+- Minimum Delphi version: [X]
+- Database: [name and version]
+- Operating system: [Windows / macOS / mobile]
+- Required dependencies: [components, frameworks]
 
-### 12.2 Premissas
-Condicoes assumidas como verdadeiras para este documento. Se uma premissa for invalidada,
-a SPEC deve ser revisada.
+### 12.2 Assumptions
+Conditions assumed to be true for this document. If an assumption is invalidated,
+the SPEC must be reviewed.
 
-- Premissa 1
-- Premissa 2
-
----
-
-## SECAO 13 — Criterios de Aceitacao Global
-
-O sistema sera considerado aprovado quando:
-
-- [ ] Todos os requisitos de prioridade Alta estiverem implementados e testados
-- [ ] Todos os casos de uso criticos executarem sem erros
-- [ ] Requisitos nao funcionais de performance atendidos (ex: tempo de resposta < 2s)
-- [ ] Testes unitarios cobrindo ao menos [X]% do codigo de negocio
-- [ ] Aprovacao formal do cliente / product owner
+- Assumption 1
+- Assumption 2
 
 ---
 
-## SECAO 14 — Historico de Revisoes
+## SECTION 13 — Global Acceptance Criteria
 
-| Versao | Data | Autor | Descricao da Alteracao |
+The system will be considered approved when:
+
+- [ ] All High priority requirements are implemented and tested
+- [ ] All critical use cases execute without errors
+- [ ] Non-functional performance requirements are met (e.g., response time < 2s)
+- [ ] Unit tests covering at least [X]% of business code
+- [ ] Formal approval by the client / product owner
+
+---
+
+## SECTION 14 — Revision History
+
+| Version | Date | Author | Change Description |
 |---|---|---|---|
-| 1.0 | | | Versao inicial |
+| 1.0 | | | Initial version |
 | 1.1 | | | |

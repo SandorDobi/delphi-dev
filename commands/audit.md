@@ -1,27 +1,27 @@
 ---
-description: Gera laudo técnico profissional completo de um projeto Delphi
+description: Generates a complete professional technical audit report of a Delphi project
 ---
 
-Execute um laudo técnico completo do projeto Delphi atual ou dos arquivos
-informados pelo usuário.
+Run a complete technical audit of the current Delphi project or the files
+provided by the user.
 
-Siga este protocolo:
+Follow this protocol:
 
-1. **Levantamento** — colete: versão do Delphi, banco de dados, componente de
-   acesso, tipo do sistema, objetivo do laudo (modernização / auditoria / venda).
+1. **Gathering** — collect: Delphi version, database, access component,
+   system type, audit objective (modernization / audit / sale).
 
-2. **Análise** — avalie as 8 dimensões: Arquitetura, Clean Code, Code Smells,
-   SOLID, Memória, Acesso a Dados, Segurança, Manutenibilidade.
+2. **Analysis** — evaluate the 8 dimensions: Architecture, Clean Code, Code Smells,
+   SOLID, Memory, Data Access, Security, Maintainability.
 
-3. **Pontuação** — score 1–5 por dimensão, média ponderada final.
-   - 4,0–5,0 = 🟢 BOM
-   - 3,0–3,9 = 🟡 REGULAR
-   - 2,0–2,9 = 🟠 CRÍTICO
-   - 1,0–1,9 = 🔴 INVIÁVEL
+3. **Scoring** — score 1–5 per dimension, final weighted average.
+   - 4.0–5.0 = 🟢 GOOD
+   - 3.0–3.9 = 🟡 FAIR
+   - 2.0–2.9 = 🟠 CRITICAL
+   - 1.0–1.9 = 🔴 UNVIABLE
 
-4. **Relatório** — gere o laudo completo com: resumo executivo, análise por
-   dimensão, pontos críticos, recomendações (imediatas / curto / médio / estratégico)
-   e estimativa de esforço para modernização.
+4. **Report** — generate the complete audit report with: executive summary, analysis per
+   dimension, critical points, recommendations (immediate / short-term / medium-term / strategic)
+   and effort estimate for modernization.
 
-Use o agente `delphi-auditor` para análise profunda quando disponível.
-Carregue a skill `delphi-laudo` para estrutura detalhada do laudo.
+Use the `delphi-auditor` agent for in-depth analysis when available.
+Load the `delphi-audit` skill for detailed audit structure.

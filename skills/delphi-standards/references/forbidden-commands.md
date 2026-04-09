@@ -1,177 +1,177 @@
-# Comandos Proibidos e Restritos — Delphi Style Guide
+# Forbidden and Restricted Commands — Delphi Style Guide
 
-## Tabela Resumo
+## Summary Table
 
-| Comando | Status | Motivo |
+| Command | Status | Reason |
 |---|---|---|
-| `with` | 🚫 PROIBIDO | Dificulta depuração, confunde compilador |
-| `Break` | 🚫 PROIBIDO | Saída deve estar na condição do loop |
-| `Continue` | 🚫 PROIBIDO | Desvio dificulta compreensão |
-| `goto` | 🚫 PROIBIDO | — |
-| `Exit` | ⚠️ RESTRITO | Apenas em guard clauses no início |
-| `Abort` | 🚫 PROIBIDO | Esconde a pilha de chamadas |
-| `Real` | 🚫 PROIBIDO | Obsoleto, substituído por `Double` |
-| `Extended` | ⚠️ DESENCORAJADO | Tamanho não otimizado para processadores modernos |
+| `with` | 🚫 FORBIDDEN | Makes debugging difficult, confuses the compiler |
+| `Break` | 🚫 FORBIDDEN | Exit condition must be in the loop declaration |
+| `Continue` | 🚫 FORBIDDEN | Branch makes comprehension harder |
+| `goto` | 🚫 FORBIDDEN | — |
+| `Exit` | ⚠️ RESTRICTED | Only in guard clauses at the beginning |
+| `Abort` | 🚫 FORBIDDEN | Hides the call stack |
+| `Real` | 🚫 FORBIDDEN | Obsolete, replaced by `Double` |
+| `Extended` | ⚠️ DISCOURAGED | Size not optimized for modern processors |
 
 ---
 
-## WITH — Proibido
+## WITH — Forbidden
 
-**Motivo:** Dificulta depuração (qual objeto está sendo referenciado?),
-confunde o compilador em ambiguidades, impossibilita análise estática.
+**Reason:** Makes debugging difficult (which object is being referenced?),
+confuses the compiler in ambiguities, prevents static analysis.
 
 ```pascal
-// ❌ ERRADO
-with QryAux do
+// ❌ WRONG
+with AuxQry do
 begin
   Close;
   SQL.Clear;
-  SQL.Add('SELECT * FROM CLIENTES');
+  SQL.Add('SELECT * FROM CUSTOMERS');
   Open;
 end;
 
-// ✅ CORRETO
-LQryAux.Close;
-LQryAux.SQL.Clear;
-LQryAux.SQL.Add('SELECT * FROM CLIENTES');
-LQryAux.Open;
+// ✅ CORRECT
+LAuxQry.Close;
+LAuxQry.SQL.Clear;
+LAuxQry.SQL.Add('SELECT * FROM CUSTOMERS');
+LAuxQry.Open;
 ```
 
 ---
 
-## BREAK e CONTINUE — Proibidos
+## BREAK and CONTINUE — Forbidden
 
-**Motivo:** Geram desvio de fluxo que dificulta a compreensão. A condição
-de saída do loop deve estar na cláusula do loop.
+**Reason:** They create flow deviations that make comprehension harder. The exit
+condition of the loop must be in the loop declaration.
 
 ```pascal
-// ❌ ERRADO — Break no loop
-for LI := 0 to LLista.Count - 1 do
+// ❌ WRONG — Break in loop
+for LI := 0 to LList.Count - 1 do
 begin
-  if LLista[LI].Ativo then
+  if LList[LI].Active then
     Break;
-  ProcessarItem(LLista[LI]);
+  ProcessItem(LList[LI]);
 end;
 
-// ✅ CORRETO — condição na declaração do loop
+// ✅ CORRECT — condition in loop declaration
 LI := 0;
-while (LI < LLista.Count) and not LLista[LI].Ativo do
+while (LI < LList.Count) and not LList[LI].Active do
 begin
-  ProcessarItem(LLista[LI]);
+  ProcessItem(LList[LI]);
   Inc(LI);
 end;
 ```
 
 ---
 
-## EXIT — Restrito a Guard Clauses
+## EXIT — Restricted to Guard Clauses
 
-O `Exit` é permitido **exclusivamente** no início do método como cláusula de guarda,
-para rejeitar condições inválidas antes da lógica principal.
+`Exit` is permitted **exclusively** at the beginning of the method as a guard clause,
+to reject invalid conditions before the main logic.
 
 ```pascal
-// ✅ CORRETO — guard clauses no início
-procedure TService.ProcessarPedido(const APedido: TPedido);
+// ✅ CORRECT — guard clauses at the beginning
+procedure TService.ProcessOrder(const AOrder: TOrder);
 begin
-  if not Assigned(APedido) then Exit;
-  if APedido.Valor <= 0 then Exit;
-  if not FClienteValido then Exit;
+  if not Assigned(AOrder) then Exit;
+  if AOrder.Value <= 0 then Exit;
+  if not FCustomerValid then Exit;
 
-  // lógica principal aqui — sem if aninhados
-  FRepository.Salvar(APedido);
-  FLogger.Log('Pedido processado: ' + APedido.Numero);
+  // main logic here — no nested ifs
+  FRepository.Save(AOrder);
+  FLogger.Log('Order processed: ' + AOrder.Number);
 end;
 
-// ❌ ERRADO — Exit no meio da lógica
-procedure TService.ProcessarPedido(const APedido: TPedido);
+// ❌ WRONG — Exit in the middle of logic
+procedure TService.ProcessOrder(const AOrder: TOrder);
 begin
-  FRepository.Salvar(APedido);
-  if not FEnviarEmail then Exit; // Exit no meio — proibido
-  FEmail.Enviar(APedido);
+  FRepository.Save(AOrder);
+  if not FSendEmail then Exit; // Exit in the middle — forbidden
+  FEmail.Send(AOrder);
 end;
 ```
 
 ---
 
-## Loops — Regras
+## Loops — Rules
 
-### FOR: usar quando o número de iterações é definido
-### WHILE: usar quando o número de iterações é indefinido (mínimo 0 iterações)
-### REPEAT: usar quando o loop deve executar pelo menos 1 vez
+### FOR: use when the number of iterations is defined
+### WHILE: use when the number of iterations is undefined (minimum 0 iterations)
+### REPEAT: use when the loop must execute at least once
 
 ```pascal
-// ✅ FOR com iterações definidas
-for LI := 0 to LLista.Count - 1 do
-  ProcessarItem(LLista[LI]);
+// ✅ FOR with defined iterations
+for LI := 0 to LList.Count - 1 do
+  ProcessItem(LList[LI]);
 
-// ✅ WHILE com condição composta (menor complexidade primeiro)
-while LAtivo and (GetValorAtual < C_LIMITE_MAXIMO) do
+// ✅ WHILE with compound condition (lowest complexity first)
+while LActive and (GetCurrentValue < C_MAX_LIMIT) do
 begin
-  ProcessarIteracao;
+  ProcessIteration;
 end;
 
-// ✅ REPEAT com condição no until
+// ✅ REPEAT with condition in until
 repeat
-  LTentativa := LTentativa + 1;
-  LResultado := TentarConectar;
-until LResultado or (LTentativa >= C_MAX_TENTATIVAS);
+  LAttempt := LAttempt + 1;
+  LResult := TryConnect;
+until LResult or (LAttempt >= C_MAX_ATTEMPTS);
 ```
 
 ---
 
-## IF — Ordem das Condições
+## IF — Condition Order
 
-Condições compostas devem estar ordenadas da **menor para a maior complexidade**
-(esquerda para direita). O compilador usa short-circuit — finaliza quando uma
-condição determina o resultado.
+Compound conditions must be ordered from **lowest to highest complexity**
+(left to right). The compiler uses short-circuit evaluation — it stops when one
+condition determines the result.
 
 ```pascal
-// ✅ CORRETO — booleano simples primeiro, cálculo complexo só se necessário
-if FAtivo and (GetCalculoComplexo < C_LIMITE) then
-  Processar;
+// ✅ CORRECT — simple boolean first, complex calculation only if needed
+if FActive and (GetComplexCalculation < C_LIMIT) then
+  Process;
 
-// ❌ ERRADO — cálculo pesado avaliado desnecessariamente
-if (GetCalculoComplexo < C_LIMITE) and FAtivo then
-  Processar;
+// ❌ WRONG — heavy calculation evaluated unnecessarily
+if (GetComplexCalculation < C_LIMIT) and FActive then
+  Process;
 ```
 
 ---
 
-## CASE — Regras
+## CASE — Rules
 
-- Valores em ordem crescente
-- Cada caso indentado em relação ao `case`
-- Blocos com máximo 5 linhas (incluindo begin..end)
-- `else` alinhado ao `case`, sem indentação extra
+- Values in ascending order
+- Each case indented relative to `case`
+- Blocks with maximum 5 lines (including begin..end)
+- `else` aligned with `case`, no extra indentation
 
 ```pascal
-// ✅ CORRETO
+// ✅ CORRECT
 case LStatus of
-  0: PedidoAberto;
-  1: PedidoConfirmado;
-  2: PedidoFaturado;
+  0: OrderOpen;
+  1: OrderConfirmed;
+  2: OrderInvoiced;
   3:
   begin
-    CancelarPedido;
-    NotificarCliente;
+    CancelOrder;
+    NotifyCustomer;
   end;
 else
-  raise EStatusInvalido.Create('Status desconhecido: ' + IntToStr(LStatus));
+  raise EInvalidStatus.Create('Unknown status: ' + IntToStr(LStatus));
 end;
 ```
 
 ---
 
-## Exceções
+## Exceptions
 
-### try..finally — Um recurso por bloco
+### try..finally — One resource per block
 ```pascal
-// ✅ CORRETO — um recurso por bloco
-LObj1 := TClasse1.Create;
+// ✅ CORRECT — one resource per block
+LObj1 := TClass1.Create;
 try
-  LObj2 := TClasse2.Create;
+  LObj2 := TClass2.Create;
   try
-    LObj1.UsarCom(LObj2);
+    LObj1.UseWith(LObj2);
   finally
     LObj2.Free;
   end;
@@ -179,34 +179,34 @@ finally
   LObj1.Free;
 end;
 
-// ❌ ERRADO — dois recursos no mesmo bloco
-LObj1 := TClasse1.Create;
-LObj2 := TClasse2.Create;
+// ❌ WRONG — two resources in the same block
+LObj1 := TClass1.Create;
+LObj2 := TClass2.Create;
 try
-  LObj1.UsarCom(LObj2);
+  LObj1.UseWith(LObj2);
 finally
   LObj1.Free;
-  LObj2.Free; // se LObj1.Free lançar, LObj2 vaza
+  LObj2.Free; // if LObj1.Free raises an exception, LObj2 leaks
 end;
 ```
 
-### try..except — Nunca silencioso
+### try..except — Never silent
 ```pascal
-// ❌ PROIBIDO — bloco vazio
+// ❌ FORBIDDEN — empty block
 try
   qry.ExecSQL;
 except
-  // vazio — esconde o erro
+  // empty — hides the error
 end;
 
-// ✅ CORRETO — captura específica, loga e relança mensagem amigável
+// ✅ CORRECT — specific catch, log, and rethrow friendly message
 try
   qry.ExecSQL;
 except
   on E: EDatabaseError do
   begin
-    Logger.GravarErro('Falha ao salvar pedido: ' + E.Message);
-    raise Exception.Create('Não foi possível salvar o pedido. Tente novamente.');
+    Logger.LogError('Failed to save order: ' + E.Message);
+    raise Exception.Create('Could not save the order. Please try again.');
   end;
 end;
 ```

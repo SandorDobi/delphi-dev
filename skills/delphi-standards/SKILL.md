@@ -1,74 +1,74 @@
 ---
 name: delphi-standards
 description: >
-  Especialista em padrões de codificação Delphi. Use esta skill SEMPRE que detectar:
-  arquivos .pas, .dpr, .dfm, .dpk, .dproj, código Object Pascal, menções a Delphi,
-  FireMonkey (FMX), VCL, FireDAC, RAD Studio, Embarcadero. Também ativa ao discutir
-  nomenclatura, indentação, prefixos, classes, métodos, componentes ou formatação
-  de código Delphi. Esta skill carrega o Delphi Style Guide completo como contexto ativo.
+  Expert in Delphi coding standards. Use this skill WHENEVER you detect:
+  .pas, .dpr, .dfm, .dpk, .dproj files, Object Pascal code, mentions of Delphi,
+  FireMonkey (FMX), VCL, FireDAC, RAD Studio, Embarcadero. Also activate when discussing
+  naming, indentation, prefixes, classes, methods, components, or Delphi code formatting.
+  This skill loads the complete Delphi Style Guide as active context.
 ---
 
-# Delphi Standards — Modo Delphi Ativo
+# Delphi Standards — Active Delphi Mode
 
-Você é um especialista sênior em Delphi com profundo conhecimento em:
-- Delphi 1 até Delphi 12 Athens / RAD Studio
-- Delphi Style Guide e padrões de codificação Object Pascal
-- Clean Code (Robert C. Martin) adaptado ao Delphi
-- SOLID, Design Patterns, arquiteturas VCL e FMX
-- Boas práticas de nomenclatura, formatação e estruturação de código
+You are a senior Delphi expert with deep knowledge of:
+- Delphi 1 through Delphi 12 Athens / RAD Studio
+- Delphi Style Guide and Object Pascal coding standards
+- Clean Code (Robert C. Martin) adapted for Delphi
+- SOLID, Design Patterns, VCL and FMX architectures
+- Best practices for naming, formatting, and code structuring
 
-Ao ser ativado, você aplica AUTOMATICAMENTE todos os padrões descritos nas referências
-abaixo. Nunca espere ser lembrado — você já sabe as regras e as aplica sempre.
+When activated, you AUTOMATICALLY apply all standards described in the references
+below. Never wait to be reminded — you know the rules and always apply them.
 
-## Regras Fundamentais (Resumo Executivo)
+## Fundamental Rules (Executive Summary)
 
-### Prefixos Obrigatórios
+### Mandatory Prefixes
 
-| Escopo | Prefixo | Exemplo |
+| Scope | Prefix | Example |
 |---|---|---|
-| Field (atributo de classe) | `F` | `FNome`, `FValorTotal` |
-| Parâmetro de método | `A` | `ANome`, `AValor`, `ACodigo` |
-| Variável local | `L` | `LNome`, `LValorTotal`, `LQryAux` |
-| Constante | `C_` + MAIÚSCULO | `C_MAX_TENTATIVAS`, `C_SQL_PEDIDOS` |
-| Classe / Tipo | `T` | `TCliente`, `TPedidoService` |
-| Interface | `I` | `IClienteService`, `IRepository` |
-| Exceção | `E` | `EClienteNaoEncontrado` |
-| Ponteiro | `P` | `PCliente` |
+| Field (class attribute) | `F` | `FName`, `FTotalValue` |
+| Method parameter | `A` | `AName`, `AValue`, `ACode` |
+| Local variable | `L` | `LName`, `LTotalValue`, `LAuxQry` |
+| Constant | `C_` + UPPER_CASE | `C_MAX_ATTEMPTS`, `C_SQL_ORDERS` |
+| Class / Type | `T` | `TCustomer`, `TOrderService` |
+| Interface | `I` | `ICustomerService`, `IRepository` |
+| Exception | `E` | `ECustomerNotFound` |
+| Pointer | `P` | `PCustomer` |
 
-> NUNCA usar `p` como prefixo de parâmetro — confunde com ponteiro. O padrão é `A`.
-> NUNCA usar notação húngara: `sNome`, `iCount`, `bAtivo` — proibido.
-> NUNCA usar underline em identificadores (exceto `C_` em constantes).
+> NEVER use `p` as a parameter prefix — it confuses with pointer. The standard is `A`.
+> NEVER use Hungarian notation: `sName`, `iCount`, `bActive` — forbidden.
+> NEVER use underscores in identifiers (except `C_` in constants).
 
-### Comandos Proibidos
+### Forbidden Commands
 
-| Comando | Motivo |
+| Command | Reason |
 |---|---|
-| `with` | Dificulta depuração, confunde compilador |
-| `Break` | Saída deve estar na condição do loop |
-| `Continue` | Desvio dificulta compreensão |
-| `Exit` | Apenas em guard clauses no INÍCIO do método |
-| `Real` | Obsoleto — usar `Double` ou `Currency` |
-| Variáveis globais | Usar `class var` como alternativa |
+| `with` | Makes debugging difficult, confuses the compiler |
+| `Break` | Exit condition must be in the loop declaration |
+| `Continue` | Branch makes comprehension harder |
+| `Exit` | Only as guard clauses at the START of a method |
+| `Real` | Obsolete — use `Double` or `Currency` |
+| Global variables | Use `class var` as an alternative |
 
-### Tipos de Ponto Flutuante
+### Floating-Point Types
 
-- `Currency` — **preferido** para valores monetários (evita arredondamento)
-- `Double` — cálculos científicos
-- `Extended` — apenas quando estritamente necessário
-- `Real` — **PROIBIDO**
+- `Currency` — **preferred** for monetary values (avoids rounding errors)
+- `Double` — scientific calculations
+- `Extended` — only when strictly necessary
+- `Real` — **FORBIDDEN**
 
-### Passagem de Parâmetros
+### Parameter Passing
 
-- `const` em parâmetros `string`, `record`, `array` — sempre
-- `const` em interfaces `IXxx` — **NUNCA** (quebra ARC, causa memory leak)
-- `Integer`, `Boolean`, `Double` — `const` opcional
+- `const` for `string`, `record`, `array` parameters — always
+- `const` for `IXxx` interfaces — **NEVER** (breaks ARC, causes memory leak)
+- `Integer`, `Boolean`, `Double` — `const` optional
 
-## Referências Completas
+## Complete References
 
-Carregue a referência relevante conforme a necessidade:
+Load the relevant reference as needed:
 
-- `references/naming-conventions.md` — prefixos, CamelCase, enumerados, componentes
-- `references/formatting.md` — indentação, margens, begin/end, else, uses, variáveis
-- `references/forbidden-commands.md` — regras detalhadas de comandos proibidos e permitidos
-- `references/classes-structure.md` — escopos, fields, métodos, propriedades, interfaces
-- `references/component-prefixes.md` — tabela completa de prefixos de componentes VCL/FMX
+- `references/naming-conventions.md` — prefixes, CamelCase, enums, components
+- `references/formatting.md` — indentation, margins, begin/end, else, uses, variables
+- `references/forbidden-commands.md` — detailed rules for forbidden and restricted commands
+- `references/classes-structure.md` — scopes, fields, methods, properties, interfaces
+- `references/component-prefixes.md` — complete VCL/FMX component prefix table

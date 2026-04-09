@@ -1,38 +1,38 @@
 ---
-description: Inicia sessão de escrita de código Delphi novo com todos os padrões aplicados
+description: Start a Delphi code writing session with all standards applied
 ---
 
-Inicie uma sessão de escrita de código Delphi padronizado.
+Start a standardized Delphi code writing session.
 
-**Passo 1 — Entender o que será criado**
+**Step 1 — Understand what will be created**
 
-Pergunte ao usuário (se não informado):
-- Tipo de elemento: classe de serviço / repositório / model / form / unit utilitária / interface?
-- Responsabilidade principal (deve ser única — SRP)?
-- Implementa alguma interface? Qual?
-- Depende de outras classes? Quais serão injetadas?
-- Nome sugerido ou você pode propor?
+Ask the user (if not provided):
+- Element type: service class / repository / model / form / utility unit / interface?
+- Main responsibility (must be single — SRP)?
+- Implements any interface? Which one?
+- Depends on other classes? Which ones will be injected?
+- Suggested name or can you propose one?
 
-**Passo 2 — Propor estrutura**
+**Step 2 — Propose structure**
 
-Antes de escrever código, apresente:
+Before writing code, present:
 ```
-Proposta: [TNomeClasse]
-- Herda de: [TInterfacedObject / TObject]
-- Implementa: [INomeInterface]
-- Injeta via construtor: [IOutraDependencia]
-- Responsabilidade: [uma frase]
-- Métodos públicos: [lista]
+Proposal: [TClassName]
+- Inherits from: [TInterfacedObject / TObject]
+- Implements: [IInterfaceName]
+- Injected via constructor: [IOtherDependency]
+- Responsibility: [one sentence]
+- Public methods: [list]
 ```
 
-Aguarde aprovação antes de continuar.
+Wait for approval before continuing.
 
-**Passo 3 — Escrever código completo**
+**Step 3 — Write complete code**
 
-Gere o código completo, compilável, com:
-- Unit header com uses organizado
-- Seção interface completa
-- Seção implementation com todos os métodos
-- Todos os padrões aplicados automaticamente
+Generate complete, compilable code with:
+- Unit header with organized uses clause
+- Complete interface section
+- Implementation section with all methods
+- All standards automatically applied
 
-Use o agente `delphi-writer` para implementação.
+Use the `delphi-writer` agent for implementation.

@@ -1,113 +1,113 @@
-# Formatação e Estilo — Delphi Style Guide
+# Formatting and Style — Delphi Style Guide
 
-## 1. Indentação e Margem
+## 1. Indentation and Margins
 
-- **2 espaços** por nível de indentação — NUNCA TAB
-- **Margem direita: 120 caracteres** — linha mais longa permitida
-- Comandos além da margem: quebrar com 2 espaços adicionais de indentação
-- Sintaxe fluente: levar o `.` para a nova linha
+- **2 spaces** per indentation level — NEVER TAB
+- **Right margin: 120 characters** — maximum line length allowed
+- Commands beyond the margin: break with 2 additional spaces of indentation
+- Fluent syntax: place the `.` on the new line
 
 ```pascal
-// ✅ Sintaxe fluente correta
+// ✅ Correct fluent syntax
 TMultiDialog4FMX
   .Dialog
-  .SetTitle('Confirmação')
-  .SetMessage('Deseja continuar?')
+  .SetTitle('Confirmation')
+  .SetMessage('Do you want to continue?')
   .Buttons
-    .AddButton('Sim', procedure begin Confirmar; end)
-    .AddButton('Não', nil)
+    .AddButton('Yes', procedure begin Confirm; end)
+    .AddButton('No', nil)
   .&End
   .Show;
 ```
 
 ## 2. Begin/End
 
-- Todo bloco `if`, `while`, `for`, `repeat` deve ter `begin..end`
-- Exceção: linha única pode omitir `begin..end`
-- `begin` em **linha própria** — nunca na mesma linha do comando
-- `end` alinhado ao `begin`
+- Every `if`, `while`, `for`, `repeat` block must have `begin..end`
+- Exception: single-line may omit `begin..end`
+- `begin` on **its own line** — never on the same line as the command
+- `end` aligned with `begin`
 
 ```pascal
-// ✅ CORRETO
-if LAtivo then
+// ✅ CORRECT
+if LActive then
 begin
-  ProcessarCliente;
-  AtualizarTela;
+  ProcessCustomer;
+  UpdateScreen;
 end;
 
-// ✅ Exceção permitida (linha única)
-if not LAtivo then Exit;
+// ✅ Allowed exception (single line)
+if not LActive then Exit;
 
-// ❌ ERRADO
-if LAtivo then begin ProcessarCliente; end;
+// ❌ WRONG
+if LActive then begin ProcessCustomer; end;
 ```
 
 ## 3. Else
 
-- `else` sempre em **linha isolada**
-- Nunca junto ao `end` anterior
+- `else` always on **its own line**
+- Never together with the preceding `end`
 
 ```pascal
-// ✅ CORRETO
-if LCondicao then
+// ✅ CORRECT
+if LCondition then
 begin
-  Acao1;
+  Action1;
 end
 else
 begin
-  Acao2;
+  Action2;
 end;
 
-// ❌ ERRADO
-if LCondicao then begin Acao1; end else begin Acao2; end;
+// ❌ WRONG
+if LCondition then begin Action1; end else begin Action2; end;
 ```
 
-## 4. Palavras Reservadas
+## 4. Reserved Words
 
-Sempre em minúsculo:
+Always in lowercase:
 `begin`, `end`, `if`, `then`, `else`, `while`, `for`, `do`, `repeat`, `until`,
 `case`, `of`, `try`, `except`, `finally`, `raise`, `function`, `procedure`,
 `class`, `type`, `var`, `const`, `uses`, `interface`, `implementation`,
 `string`, `array`, `record`, `object`
 
-Tipos primitivos respeitam grafia original:
+Primitive types respect original casing:
 `Integer`, `Double`, `Boolean`, `Char`, `Currency`, `Extended`, `Byte`
 
-## 5. Parênteses
+## 5. Parentheses
 
-- Sem espaço entre `(` e o próximo caractere
-- Sem espaço entre o caractere anterior e `)`
-- Sem espaço entre nome do método e `(`
+- No space between `(` and the next character
+- No space between the previous character and `)`
+- No space between method name and `(`
 
 ```pascal
-// ✅ CORRETO
-LValor := CalcularICMS(ABase, AAliquota);
+// ✅ CORRECT
+LValue := CalculateICMS(ABase, ARate);
 
-// ❌ ERRADO
-LValor := CalcularICMS( ABase, AAliquota );
-LValor := CalcularICMS (ABase, AAliquota);
+// ❌ WRONG
+LValue := CalculateICMS( ABase, ARate );
+LValue := CalculateICMS (ABase, ARate);
 ```
 
-## 6. Declaração de Variáveis
+## 6. Variable Declarations
 
-Uma variável por linha, agrupadas por tipo:
+One variable per line, grouped by type:
 
 ```pascal
-// ✅ CORRETO
+// ✅ CORRECT
 var
-  LNome: string;
-  LSobrenome: string;
-  LIdade: Integer;
-  LValorTotal: Currency;
-  LCliente: TCliente;
+  LName: string;
+  LLastName: string;
+  LAge: Integer;
+  LTotalValue: Currency;
+  LCustomer: TCustomer;
 
-// ❌ ERRADO
-var LNome, LSobrenome: string; LIdade, LCodigo: Integer;
+// ❌ WRONG
+var LName, LLastName: string; LAge, LCode: Integer;
 ```
 
-## 7. Cláusula Uses
+## 7. Uses Clause
 
-Uma unit por linha, organizada do genérico para o específico:
+One unit per line, organized from generic to specific:
 
 ```pascal
 uses
@@ -115,53 +115,53 @@ uses
   System.SysUtils,
   System.Classes,
   System.Generics.Collections,
-  // VCL ou FMX
+  // VCL or FMX
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
   // FireDAC
   FireDAC.Comp.Client,
   FireDAC.Stan.Def,
-  // Terceiros
+  // Third-party
   FastReport,
   ACBrNFe,
-  // Projeto — do genérico para o específico
-  Sistema.Model.Cliente,
-  Sistema.Service.Pedido,
-  Sistema.Repository.Pedido;
+  // Project — from generic to specific
+  System.Model.Customer,
+  System.Service.Order,
+  System.Repository.Order;
 ```
 
-## 8. Delimitadores em Declarações
+## 8. Declaration Delimiters
 
-Vírgula e ponto-e-vírgula junto ao token anterior, espaço antes do próximo:
+Comma and semicolon next to the previous token, space before the next one:
 
 ```pascal
-// ✅ CORRETO
-procedure Calcular(const ANome: string; AValor: Currency; AQuantidade: Integer);
+// ✅ CORRECT
+procedure Calculate(const AName: string; AValue: Currency; AQuantity: Integer);
 
-// ❌ ERRADO
-procedure Calcular( const ANome : string ; AValor : Currency );
+// ❌ WRONG
+procedure Calculate( const AName : string ; AValue : Currency );
 ```
 
-## 9. Cláusulas de Seção
+## 9. Section Clauses
 
-Separar seções com uma linha em branco:
+Separate sections with a blank line:
 
 ```pascal
 type
-  TCliente = class
+  TCustomer = class
   strict private
-    FNome: string;
-    FIdade: Integer;
+    FName: string;
+    FAge: Integer;
 
   private
-    procedure SetNome(const ANome: string);
+    procedure SetName(const AName: string);
 
   public
-    constructor Create(const ANome: string; AIdade: Integer);
+    constructor Create(const AName: string; AAge: Integer);
     destructor Destroy; override;
 
-    property Nome: string read FNome write SetNome;
-    property Idade: Integer read FIdade;
+    property Name: string read FName write SetName;
+    property Age: Integer read FAge;
   end;
 ```

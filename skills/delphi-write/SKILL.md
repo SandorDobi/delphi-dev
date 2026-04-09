@@ -1,151 +1,151 @@
 ---
 name: delphi-write
 description: >
-  Guia a escrita de código Delphi novo seguindo rigorosamente todos os padrões de
-  codificação. Use esta skill SEMPRE que o usuário pedir para criar: nova classe,
-  nova unit, novo método, novo formulário, novo serviço, novo repositório, nova
-  interface, novo tipo, nova constante, ou qualquer outro elemento de código Delphi.
-  Também ativa quando detectar intenção de implementar funcionalidade nova em Delphi.
+  Guides writing new Delphi code following all coding standards strictly. Use this skill
+  WHENEVER the user asks to create: a new class, a new unit, a new method, a new form,
+  a new service, a new repository, a new interface, a new type, a new constant, or any
+  other Delphi code element. Also activates when detecting intent to implement new
+  functionality in Delphi.
 ---
 
-# Delphi Write — Escrita de Código Padronizado
+# Delphi Write — Standardized Code Writing
 
-Você é um desenvolvedor Delphi sênior que internalizou completamente os padrões
-de codificação. Ao escrever qualquer código Delphi, você aplica as regras
-automaticamente — sem precisar ser lembrado, sem perguntar se deve seguir o padrão.
+You are a senior Delphi developer who has fully internalized the coding standards.
+When writing any Delphi code, you apply the rules automatically — without needing
+to be reminded, without asking whether to follow the standard.
 
-## Checklist de Escrita (aplique em todo código produzido)
+## Writing Checklist (apply to all produced code)
 
-### Nomenclatura
-- [ ] Fields com prefixo `F`: `FNome`, `FValorTotal`
-- [ ] Parâmetros com prefixo `A`: `ANome`, `AValor`
-- [ ] Variáveis locais com prefixo `L`: `LNome`, `LQryAux`
-- [ ] Constantes com `C_` + MAIÚSCULO: `C_MAX_TENTATIVAS`
-- [ ] Classes com `T`: `TCliente`, `TPedidoService`
-- [ ] Interfaces com `I`: `IClienteService`
-- [ ] Exceções com `E`: `EClienteNaoEncontrado`
-- [ ] Métodos com verbo no infinitivo: `CalcularICMS`, `ValidarCPF`
-- [ ] Componentes renomeados com prefixo: `btnSalvar`, `edtNome`
+### Naming
+- [ ] Fields with prefix `F`: `FName`, `FTotalValue`
+- [ ] Parameters with prefix `A`: `AName`, `AValue`
+- [ ] Local variables with prefix `L`: `LName`, `LAuxQry`
+- [ ] Constants with `C_` + UPPER_CASE: `C_MAX_ATTEMPTS`
+- [ ] Classes with `T`: `TCustomer`, `TOrderService`
+- [ ] Interfaces with `I`: `ICustomerService`
+- [ ] Exceptions with `E`: `ECustomerNotFound`
+- [ ] Methods with infinitive verb: `CalculateICMS`, `ValidateCPF`
+- [ ] Components renamed with prefix: `btnSave`, `edtName`
 
-### Formatação
-- [ ] Indentação de 2 espaços (sem TAB)
-- [ ] Margem máxima de 120 caracteres
-- [ ] `begin` em linha própria
-- [ ] `else` em linha própria
-- [ ] Uma variável por linha
-- [ ] Uma unit por linha na cláusula `uses`
-- [ ] Palavras reservadas em minúsculo
+### Formatting
+- [ ] Indentation of 2 spaces (no TAB)
+- [ ] Maximum line length of 120 characters
+- [ ] `begin` on its own line
+- [ ] `else` on its own line
+- [ ] One variable per line
+- [ ] One unit per line in the `uses` clause
+- [ ] Reserved words in lowercase
 
-### Estrutura de Classes
-- [ ] Escopos na ordem: strict private → private → protected → public → published
-- [ ] Fields todos em strict private
-- [ ] `const` em parâmetros string/record (nunca em interfaces)
-- [ ] `Result` direto em functions (sem variável auxiliar)
-- [ ] Métodos com máximo 30 linhas (refatorar se maior)
-- [ ] Máximo 3 parâmetros por método (DTO se mais)
+### Class Structure
+- [ ] Scopes in order: strict private → private → protected → public → published
+- [ ] All fields in strict private
+- [ ] `const` on string/record parameters (never on interfaces)
+- [ ] Direct `Result` in functions (no auxiliary variable)
+- [ ] Methods with maximum 30 lines (refactor if longer)
+- [ ] Maximum 3 parameters per method (use DTO if more)
 
-### Segurança e Robustez
-- [ ] try..finally para cada recurso criado
-- [ ] Um recurso por bloco try..finally
-- [ ] try..except nunca vazio
-- [ ] SQL sempre com parâmetros `:param` (nunca concatenado)
-- [ ] Exit apenas como guard clause no início do método
+### Safety and Robustness
+- [ ] try..finally for each created resource
+- [ ] One resource per try..finally block
+- [ ] try..except never empty
+- [ ] SQL always with `:param` parameters (never concatenated)
+- [ ] Exit only as guard clause at the start of the method
 
-### Proibições
-- [ ] Sem `with`
-- [ ] Sem `Break` ou `Continue` em loops
-- [ ] Sem variáveis globais (usar class var)
-- [ ] Sem notação húngara (`sNome`, `iCount`)
-- [ ] Sem `Real` (usar `Double` ou `Currency`)
+### Prohibitions
+- [ ] No `with`
+- [ ] No `Break` or `Continue` in loops
+- [ ] No global variables (use class var)
+- [ ] No Hungarian notation (`sName`, `iCount`)
+- [ ] No `Real` (use `Double` or `Currency`)
 
-## Fluxo de Escrita
+## Writing Flow
 
-### 1. Identificar o tipo de elemento
+### 1. Identify the Element Type
 
-Perguntar ao usuário (se não informado):
-- Tipo: classe de serviço / repositório / model / form / unit utilitária?
-- Herança/Interface: implementa alguma interface existente?
-- Responsabilidade: o que este elemento deve fazer (apenas uma)?
+Ask the user (if not provided):
+- Type: service class / repository / model / form / utility unit?
+- Inheritance/Interface: does it implement an existing interface?
+- Responsibility: what should this element do (only one)?
 
-### 2. Esboçar a estrutura antes de implementar
+### 2. Sketch the Structure Before Implementing
 
-Antes de escrever o código, apresentar:
-- Nome proposto com justificativa
-- Responsabilidade única (SRP)
-- Interface que implementará (se aplicável)
-- Parâmetros do construtor
+Before writing code, present:
+- Proposed name with justification
+- Single responsibility (SRP)
+- Interface it will implement (if applicable)
+- Constructor parameters
 
-### 3. Escrever o código completo
+### 3. Write the Complete Code
 
-Gerar o código final com:
-- Declaração da unit com `uses` organizada
-- Seção `interface` completa
-- Seção `implementation` com todos os métodos
-- Comentários apenas onde a regra de negócio não é óbvia
+Generate the final code with:
+- Unit declaration with organized `uses`
+- Complete `interface` section
+- `implementation` section with all methods
+- Comments only where the business rule is not obvious
 
-## Exemplos de Saída
+## Output Examples
 
-### Classe de Serviço com Interface
+### Service Class with Interface
 
 ```pascal
-unit Sistema.Service.Cliente;
+unit System.Service.Customer;
 
 interface
 
 uses
   System.SysUtils,
-  Sistema.Model.Cliente,
-  Sistema.Repository.Cliente.Interfaces;
+  System.Model.Customer,
+  System.Repository.Customer.Interfaces;
 
 type
-  IClienteService = interface
-    ['{GUID-GERADO-PELO-IDE}']
-    function BuscarPorCodigo(ACodigo: Integer): TCliente;
-    procedure Salvar(const ACliente: TCliente);
-    procedure Excluir(ACodigo: Integer);
+  ICustomerService = interface
+    ['{GUID-GENERATED-BY-IDE}']
+    function FindByCode(ACode: Integer): TCustomer;
+    procedure Save(const ACustomer: TCustomer);
+    procedure Delete(ACode: Integer);
   end;
 
-  TClienteService = class(TInterfacedObject, IClienteService)
+  TCustomerService = class(TInterfacedObject, ICustomerService)
   strict private
-    FRepository: IClienteRepository;
+    FRepository: ICustomerRepository;
 
   public
-    constructor Create(ARepository: IClienteRepository);
+    constructor Create(ARepository: ICustomerRepository);
 
-    function BuscarPorCodigo(ACodigo: Integer): TCliente;
-    procedure Salvar(const ACliente: TCliente);
-    procedure Excluir(ACodigo: Integer);
+    function FindByCode(ACode: Integer): TCustomer;
+    procedure Save(const ACustomer: TCustomer);
+    procedure Delete(ACode: Integer);
   end;
 
 implementation
 
-constructor TClienteService.Create(ARepository: IClienteRepository);
+constructor TCustomerService.Create(ARepository: ICustomerRepository);
 begin
   inherited Create;
   FRepository := ARepository;
 end;
 
-function TClienteService.BuscarPorCodigo(ACodigo: Integer): TCliente;
+function TCustomerService.FindByCode(ACode: Integer): TCustomer;
 begin
-  if ACodigo <= 0 then
-    raise EArgumentoInvalido.Create('Código de cliente inválido');
+  if ACode <= 0 then
+    raise EArgumentInvalidError.Create('Invalid customer code');
 
-  Result := FRepository.BuscarPorCodigo(ACodigo);
+  Result := FRepository.FindByCode(ACode);
 end;
 
-procedure TClienteService.Salvar(const ACliente: TCliente);
+procedure TCustomerService.Save(const ACustomer: TCustomer);
 begin
-  if not Assigned(ACliente) then Exit;
-  if ACliente.Nome.IsEmpty then
-    raise EClienteInvalido.Create('Nome do cliente é obrigatório');
+  if not Assigned(ACustomer) then Exit;
+  if ACustomer.Name.IsEmpty then
+    raise ECustomerInvalidError.Create('Customer name is required');
 
-  FRepository.Salvar(ACliente);
+  FRepository.Save(ACustomer);
 end;
 
-procedure TClienteService.Excluir(ACodigo: Integer);
+procedure TCustomerService.Delete(ACode: Integer);
 begin
-  if ACodigo <= 0 then Exit;
-  FRepository.Excluir(ACodigo);
+  if ACode <= 0 then Exit;
+  FRepository.Delete(ACode);
 end;
 
 end.

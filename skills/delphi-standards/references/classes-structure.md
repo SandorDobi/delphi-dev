@@ -1,177 +1,177 @@
-# Estrutura de Classes — Delphi Style Guide
+# Class Structure — Delphi Style Guide
 
-## 1. Ordem de Escopos de Visibilidade
+## 1. Visibility Scope Order
 
-Do mais restritivo ao menos restritivo:
+From most restrictive to least restrictive:
 
 ```pascal
 type
-  TCliente = class(TInterfacedObject, ICliente)
+  TCustomer = class(TInterfacedObject, ICustomer)
   strict private
-    // Fields — sempre aqui
-    FNome: string;
-    FIdade: Integer;
-    FValorTotal: Currency;
+    // Fields — always here
+    FName: string;
+    FAge: Integer;
+    FTotalValue: Currency;
 
   private
-    // Getters e Setters
-    procedure SetNome(const ANome: string);
-    function GetNome: string;
+    // Getters and Setters
+    procedure SetName(const AName: string);
+    function GetName: string;
 
   protected
-    // Métodos acessíveis por subclasses
-    function GetIdade: Integer; virtual;
+    // Methods accessible by subclasses
+    function GetAge: Integer; virtual;
 
   public
-    // Interface pública
-    constructor Create(const ANome: string; AIdade: Integer);
+    // Public interface
+    constructor Create(const AName: string; AAge: Integer);
     destructor Destroy; override;
 
-    procedure ProcessarPedido(const APedido: TPedido);
-    function CalcularDesconto(const AValor: Currency): Currency;
+    procedure ProcessOrder(const AOrder: TOrder);
+    function CalculateDiscount(const AValue: Currency): Currency;
 
-    property Nome: string read GetNome write SetNome;
-    property Idade: Integer read GetIdade;
-    property ValorTotal: Currency read FValorTotal;
+    property Name: string read GetName write SetName;
+    property Age: Integer read GetAge;
+    property TotalValue: Currency read FTotalValue;
 
   published
-    // Apenas para componentes registrados
+    // Only for registered components
   end;
 ```
 
-## 2. Fields (Atributos)
+## 2. Fields (Attributes)
 
-- Sempre em `strict private` (preferencial) ou `private`
-- Prefixo `F` obrigatório
-- CamelCase após o prefixo
-- NUNCA expostos diretamente — sempre via propriedades
+- Always in `strict private` (preferred) or `private`
+- `F` prefix mandatory
+- CamelCase after prefix
+- NEVER exposed directly — always via properties
 
 ```pascal
 strict private
-  FNome: string;           // ✅
-  FValorTotal: Currency;   // ✅
-  FAtivo: Boolean;         // ✅
+  FName: string;           // ✅
+  FTotalValue: Currency;   // ✅
+  FActive: Boolean;        // ✅
 ```
 
-## 3. Métodos
+## 3. Methods
 
-- Verbo no infinitivo: `Calcular`, `Validar`, `Salvar`, `Buscar`
+- Infinitive verb: `Calculate`, `Validate`, `Save`, `Find`
 - CamelCase
-- Tamanho ideal: 20–30 linhas. Acima de 50: refatorar com Extract Method
-- Uma responsabilidade por método (SRP)
+- Ideal size: 20–30 lines. Above 50: refactor with Extract Method
+- One responsibility per method (SRP)
 
 ```pascal
-// ✅ Método focado
-function TClienteService.CalcularDesconto(const AValor: Currency): Currency;
+// ✅ Focused method
+function TCustomerService.CalculateDiscount(const AValue: Currency): Currency;
 begin
-  if AValor <= 0 then
-    raise EArgumentoInvalido.Create('Valor deve ser maior que zero');
+  if AValue <= 0 then
+    raise EArgumentInvalidError.Create('Value must be greater than zero');
 
-  Result := AValor * FPercentualDesconto / 100;
+  Result := AValue * FDiscountPercentage / 100;
 end;
 ```
 
-## 4. Parâmetros
+## 4. Parameters
 
-- Prefixo `A` obrigatório
-- CamelCase após o prefixo
-- Sem prefixo de tipo (`sNome`, `iCount` — proibido)
-- `const` para `string`, `record`, `array` — sempre
-- `const` para interfaces — NUNCA (quebra ARC)
-- 3 parâmetros: tolerável. 4+: criar DTO
+- `A` prefix mandatory
+- CamelCase after prefix
+- No type prefix (`sName`, `iCount` — forbidden)
+- `const` for `string`, `record`, `array` — always
+- `const` for interfaces — NEVER (breaks ARC)
+- 3 parameters: tolerable. 4+: create DTO
 
 ```pascal
-// ✅ CORRETO
-procedure ProcessarVenda(const ANome: string; AValor: Currency;
-  AQuantidade: Integer);
+// ✅ CORRECT
+procedure ProcessSale(const AName: string; AValue: Currency;
+  AQuantity: Integer);
 
-// ❌ ERRADO — notação húngara, sem const
-procedure ProcessarVenda(sNome: string; dValor: Double; iQtd: Integer);
+// ❌ WRONG — Hungarian notation, no const
+procedure ProcessSale(sName: string; dValue: Double; iQty: Integer);
 ```
 
-## 5. Resultado de Functions
+## 5. Function Results
 
-Escrever diretamente na variável `Result`:
+Write directly to the `Result` variable:
 
 ```pascal
-// ✅ CORRETO
-function CalcularICMS(const ABase: Currency; const AAliquota: Double): Currency;
+// ✅ CORRECT
+function CalculateICMS(const ABase: Currency; const ARate: Double): Currency;
 begin
-  Result := ABase * AAliquota / 100;
+  Result := ABase * ARate / 100;
 end;
 
-// ❌ ERRADO — variável auxiliar desnecessária
-function CalcularICMS(const ABase: Currency; const AAliquota: Double): Currency;
-var LValor: Currency;
+// ❌ WRONG — unnecessary auxiliary variable
+function CalculateICMS(const ABase: Currency; const ARate: Double): Currency;
+var LValue: Currency;
 begin
-  LValor := ABase * AAliquota / 100;
-  Result := LValor;
+  LValue := ABase * ARate / 100;
+  Result := LValue;
 end;
 ```
 
-## 6. Propriedades
+## 6. Properties
 
-- CamelCase sem prefixo
-- Getter/Setter com prefixo `Get`/`Set`
+- CamelCase without prefix
+- Getter/Setter with `Get`/`Set` prefix
 
 ```pascal
-property Nome: string read GetNome write SetNome;
-property ValorTotal: Currency read FValorTotal;  // somente leitura
-property Ativo: Boolean read FAtivo write FAtivo; // sem getter/setter dedicado
+property Name: string read GetName write SetName;
+property TotalValue: Currency read FTotalValue;  // read-only
+property Active: Boolean read FActive write FActive; // no dedicated getter/setter
 ```
 
 ## 7. Interfaces
 
-- Prefixo `I` obrigatório
-- Herdam de `IInterface`
-- GUID gerado com Ctrl+Shift+G no Delphi IDE (NUNCA digitado manualmente)
-- Classes implementadoras herdam de `TInterfacedObject`
+- `I` prefix mandatory
+- Inherit from `IInterface`
+- GUID generated with Ctrl+Shift+G in Delphi IDE (NEVER typed manually)
+- Implementing classes inherit from `TInterfacedObject`
 
 ```pascal
 type
-  IClienteService = interface
-    ['{GUID-GERADO-PELO-IDE}']
-    function BuscarPorCodigo(ACodigo: Integer): TCliente;
-    procedure Salvar(const ACliente: TCliente);
+  ICustomerService = interface
+    ['{GUID-GENERATED-BY-IDE}']
+    function FindByCode(ACode: Integer): TCustomer;
+    procedure Save(const ACustomer: TCustomer);
   end;
 
-  TClienteServiceFireDAC = class(TInterfacedObject, IClienteService)
+  TCustomerServiceFireDAC = class(TInterfacedObject, ICustomerService)
   strict private
-    FConexao: IDbConnection;
+    FConnection: IDbConnection;
   public
-    constructor Create(AConexao: IDbConnection);
-    function BuscarPorCodigo(ACodigo: Integer): TCliente;
-    procedure Salvar(const ACliente: TCliente);
+    constructor Create(AConnection: IDbConnection);
+    function FindByCode(ACode: Integer): TCustomer;
+    procedure Save(const ACustomer: TCustomer);
   end;
 ```
 
 ## 8. DTOs (Data Transfer Objects)
 
-Para métodos com 4+ parâmetros, agrupar em Record ou classe:
+For methods with 4+ parameters, group into Record or class:
 
 ```pascal
 type
-  TDadosCliente = record
-    Nome: string;
+  TCustomerData = record
+    Name: string;
     CPF: string;
-    Endereco: string;
-    Cidade: string;
-    UF: string;
+    Address: string;
+    City: string;
+    State: string;
   end;
 
-// ✅ Com DTO — limpo
-function CadastrarCliente(const ADados: TDadosCliente): Boolean;
+// ✅ With DTO — clean
+function RegisterCustomer(const AData: TCustomerData): Boolean;
 
-// ❌ Políade — 5 parâmetros
-function CadastrarCliente(ANome, ACPF, AEndereco, ACidade, AUF: string): Boolean;
+// ❌ Polyadic — 5 parameters
+function RegisterCustomer(AName, ACPF, AAddress, ACity, AState: string): Boolean;
 ```
 
-## 9. Princípios SOLID
+## 9. SOLID Principles
 
-| Letra | Princípio | Aplicação em Delphi |
+| Letter | Principle | Delphi Application |
 |---|---|---|
-| S | Responsabilidade Única | Uma classe = um motivo para mudar |
-| O | Aberto/Fechado | Herança e interfaces para extensão |
-| L | Substituição de Liskov | Subclasses substituem a base sem quebrar |
-| I | Segregação de Interface | Várias interfaces específicas > uma geral |
-| D | Inversão de Dependência | Dependa de `IInterface`, não de `TClasse` |
+| S | Single Responsibility | One class = one reason to change |
+| O | Open/Closed | Inheritance and interfaces for extension |
+| L | Liskov Substitution | Subclasses replace base without breaking |
+| I | Interface Segregation | Multiple specific interfaces > one general |
+| D | Dependency Inversion | Depend on `IInterface`, not `TClass` |

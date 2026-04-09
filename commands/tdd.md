@@ -2,32 +2,32 @@
 description: Generates DUnitX unit tests for the entire Delphi project or a specific class
 ---
 
-Inicie a criacao de testes unitarios DUnitX para o projeto Delphi atual.
+Start creating DUnitX unit tests for the current Delphi project.
 
-**Idioma:** Detecte o idioma do usuario e responda sempre nesse idioma.
-Padrao: portugues brasileiro.
+**Language:** Detect the user's language and always respond in that language.
+Default: English.
 
-Este comando opera em **Fase 1 (setup inicial)**:
+This command operates in **Phase 1 (initial setup)**:
 
-1. **Analise do Projeto** — Ler todas as units do projeto e identificar o que pode
-   ser testado. Prioridade: servicos de negocio, repositorios, utilitarios com logica.
-   Ignorar: Forms, DataModules, classes sem logica propria.
+1. **Project Analysis** — Read all units in the project and identify what can
+   be tested. Priority: business services, repositories, utilities with logic.
+   Ignore: Forms, DataModules, classes without their own logic.
 
-2. **Proposta** — Apresentar a suite de testes proposta com a lista de casos por classe:
+2. **Proposal** — Present the proposed test suite with the list of cases per class:
    ```
-   [TClienteService] — N casos
+   [TClienteService] — N cases
      ✓ Test_Salvar_ClienteValido_Salva
      ✓ Test_Salvar_ClienteSemNome_LancaExcecao
      ...
    ```
-   Aguardar aprovacao do usuario antes de gerar.
+   Wait for user approval before generating.
 
-3. **Geracao** — Produzir todos os arquivos `Teste[NomeDaClasse].pas` e o projeto
-   `TestRunner.dpr` com o runner DUnitX.
+3. **Generation** — Produce all `Teste[NomeDaClasse].pas` files and the
+   `TestRunner.dpr` project with the DUnitX runner.
 
-**Fase 2 (continua automaticamente):** Apos cada nova implementacao via `/write`,
-o agente `delphi-tester` cria os testes da nova classe automaticamente e notifica
-o usuario com a lista dos casos criados.
+**Phase 2 (continues automatically):** After each new implementation via `/write`,
+the `delphi-tester` agent creates tests for the new class automatically and notifies
+the user with the list of created cases.
 
-Use o agente `delphi-tester` para executar a analise e geracao.
-Carregue a skill `delphi-testes` e os padroes em `references/dunitx-patterns.md`.
+Use the `delphi-tester` agent to perform analysis and generation.
+Load the `delphi-tests` skill and the patterns in `references/dunitx-patterns.md`.

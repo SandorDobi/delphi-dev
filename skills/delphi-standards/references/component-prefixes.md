@@ -1,118 +1,118 @@
-# Prefixos de Componentes — VCL e FMX
+# Component Prefixes — VCL and FMX
 
-## Regra Geral
+## General Rule
 
-Todo componente **referenciado via código-fonte** deve ser renomeado com:
-`[prefixo][NomeDescritivoEmCamelCase]`
+Every component **referenced via source code** must be renamed with:
+`[prefix][DescriptiveNameInCamelCase]`
 
-Componentes não referenciados via código: tolerável manter nome default.
+Components not referenced via code: default names are tolerable.
 
 ```pascal
-// ❌ ERRADO — nomes default
+// ❌ WRONG — default names
 Button1.Enabled := False;
 Edit1.Text := '';
-Label1.Caption := 'Carregando...';
+Label1.Caption := 'Loading...';
 
-// ✅ CORRETO — renomeados
-btnSalvar.Enabled := False;
-edtNomeCliente.Text := '';
-lblStatus.Caption := 'Carregando...';
+// ✅ CORRECT — renamed with prefix
+btnSave.Enabled := False;
+edtCustomerName.Text := '';
+lblStatus.Caption := 'Loading...';
 ```
 
 ---
 
-## Tabela de Prefixos
+## Prefix Table
 
-### Entrada de Dados
-| Componente | Prefixo | Exemplos |
+### Data Entry
+| Component | Prefix | Examples |
 |---|---|---|
-| TEdit / TFMXEdit | `edt` | `edtNome`, `edtCPF`, `edtValorVenda` |
-| TMemo / TFMXMemo | `mmo` | `mmoObservacao`, `mmoLog` |
-| TComboBox | `cbx` | `cbxEstado`, `cbxTipoPagamento` |
-| TListBox | `lst` | `lstItens`, `lstClientes` |
-| TCheckBox | `chk` | `chkAtivo`, `chkConcordoTermos` |
-| TRadioButton | `rdb` | `rdbMasculino`, `rdbFeminino` |
-| TDateTimePicker | `dtp` | `dtpDataNascimento`, `dtpVencimento` |
-| TSpinEdit | `spe` | `speQuantidade`, `speNumeroParcelas` |
-| TTrackBar | `trk` | `trkVolume`, `trkBrilho` |
-| TNumberBox (FMX) | `nbx` | `nbxValor`, `nbxQuantidade` |
+| TEdit / TFMXEdit | `edt` | `edtName`, `edtCPF`, `edtSaleValue` |
+| TMemo / TFMXMemo | `mmo` | `mmoNotes`, `mmoLog` |
+| TComboBox | `cbx` | `cbxState`, `cbxPaymentType` |
+| TListBox | `lst` | `lstItems`, `lstCustomers` |
+| TCheckBox | `chk` | `chkActive`, `chkAgreeTerms` |
+| TRadioButton | `rdb` | `rdbMale`, `rdbFemale` |
+| TDateTimePicker | `dtp` | `dtpBirthDate`, `dtpDueDate` |
+| TSpinEdit | `spe` | `speQuantity`, `speInstallmentCount` |
+| TTrackBar | `trk` | `trkVolume`, `trkBrightness` |
+| TNumberBox (FMX) | `nbx` | `nbxValue`, `nbxQuantity` |
 
-### Exibição
-| Componente | Prefixo | Exemplos |
+### Display
+| Component | Prefix | Examples |
 |---|---|---|
-| TLabel | `lbl` | `lblTitulo`, `lblStatus`, `lblTotal` |
-| TImage | `img` | `imgLogo`, `imgFoto`, `imgIcone` |
-| TProgressBar | `prg` | `prgCarregamento`, `prgUpload` |
+| TLabel | `lbl` | `lblTitle`, `lblStatus`, `lblTotal` |
+| TImage | `img` | `imgLogo`, `imgPhoto`, `imgIcon` |
+| TProgressBar | `prg` | `prgLoading`, `prgUpload` |
 
-### Botões
-| Componente | Prefixo | Exemplos |
+### Buttons
+| Component | Prefix | Examples |
 |---|---|---|
-| TButton | `btn` | `btnSalvar`, `btnCancelar`, `btnNovo` |
-| TBitBtn | `bbt` | `bbtConfirmar`, `bbtExcluir` |
-| TSpeedButton | `spb` | `spbImprimir`, `spbExportar` |
-| TToolButton | `tbn` | `tbnSalvar`, `tbnAbrir` |
+| TButton | `btn` | `btnSave`, `btnCancel`, `btnNew` |
+| TBitBtn | `bbt` | `bbtConfirm`, `bbtDelete` |
+| TSpeedButton | `spb` | `spbPrint`, `spbExport` |
+| TToolButton | `tbn` | `tbnSave`, `tbnOpen` |
 
-### Layout e Containers
-| Componente | Prefixo | Exemplos |
+### Layout and Containers
+| Component | Prefix | Examples |
 |---|---|---|
-| TPanel | `pnl` | `pnlCabecalho`, `pnlRodape`, `pnlFiltros` |
-| TGroupBox | `grp` | `grpDadosPessoais`, `grpEndereco` |
-| TPageControl | `pgc` | `pgcPrincipal`, `pgcCadastro` |
-| TTabSheet | `tbs` | `tbsDadosGerais`, `tbsEndereco` |
-| TScrollBox | `scb` | `scbConteudo`, `scbItens` |
+| TPanel | `pnl` | `pnlHeader`, `pnlFooter`, `pnlFilters` |
+| TGroupBox | `grp` | `grpPersonalData`, `grpAddress` |
+| TPageControl | `pgc` | `pgcMain`, `pgcRegistration` |
+| TTabSheet | `tbs` | `tbsGeneralData`, `tbsAddress` |
+| TScrollBox | `scb` | `scbContent`, `scbItems` |
 | TSplitter | `spl` | `splVertical`, `splHorizontal` |
-| TFrame | `frm` | `frmFiltros`, `frmRodape` |
-| TLayout (FMX) | `lyt` | `lytCabecalho`, `lytBotoes` |
-| TRectangle (FMX) | `rct` | `rctFundo`, `rctBordaAzul` |
+| TFrame | `frm` | `frmFilters`, `frmFooter` |
+| TLayout (FMX) | `lyt` | `lytHeader`, `lytButtons` |
+| TRectangle (FMX) | `rct` | `rctBackground`, `rctBlueBorder` |
 
-### Grids e Listas
-| Componente | Prefixo | Exemplos |
+### Grids and Lists
+| Component | Prefix | Examples |
 |---|---|---|
-| TDBGrid | `grd` | `grdClientes`, `grdPedidos`, `grdItens` |
-| TStringGrid | `sgr` | `sgrDados`, `sgrResumo` |
-| TListView | `lsv` | `lsvArquivos`, `lsvResultados` |
-| TTreeView | `trv` | `trvMenu`, `trvCategorias` |
+| TDBGrid | `grd` | `grdCustomers`, `grdOrders`, `grdItems` |
+| TStringGrid | `sgr` | `sgrData`, `sgrSummary` |
+| TListView | `lsv` | `lsvFiles`, `lsvResults` |
+| TTreeView | `trv` | `trvMenu`, `trvCategories` |
 
-### Dados
-| Componente | Prefixo | Exemplos |
+### Data
+| Component | Prefix | Examples |
 |---|---|---|
-| TDataSource | `dts` | `dtsClientes`, `dtsPedidos` |
-| TFDQuery / TQuery | `qry` | `qryClientes`, `qryPedidos`, `qryAux` |
-| TFDTable / TTable | `tbl` | `tblProdutos`, `tblEstoque` |
-| TFDConnection | `cnn` | `cnnPrincipal`, `cnnRelatorio` |
-| TFDTransaction | `trn` | `trnPrincipal`, `trnLote` |
-| TClientDataSet | `cds` | `cdsClientes`, `cdsPedidos` |
-| TFDMemTable | `mdt` | `mdtResultados`, `mdtTemp` |
+| TDataSource | `dts` | `dtsCustomers`, `dtsOrders` |
+| TFDQuery / TQuery | `qry` | `qryCustomers`, `qryOrders`, `qryAux` |
+| TFDTable / TTable | `tbl` | `tblProducts`, `tblInventory` |
+| TFDConnection | `cnn` | `cnnMain`, `cnnReport` |
+| TFDTransaction | `trn` | `trnMain`, `trnBatch` |
+| TClientDataSet | `cds` | `cdsCustomers`, `cdsOrders` |
+| TFDMemTable | `mdt` | `mdtResults`, `mdtTemp` |
 
-### Menu e Toolbar
-| Componente | Prefixo | Exemplos |
+### Menu and Toolbar
+| Component | Prefix | Examples |
 |---|---|---|
-| TMainMenu | `mnu` | `mnuPrincipal` |
-| TPopupMenu | `pmu` | `pmuGrid`, `pmuIcone` |
-| TMenuItem | `mni` | `mniArquivo`, `mniSalvar` |
-| TToolBar | `tlb` | `tlbPrincipal`, `tlbFormatacao` |
+| TMainMenu | `mnu` | `mnuMain` |
+| TPopupMenu | `pmu` | `pmuGrid`, `pmuIcon` |
+| TMenuItem | `mni` | `mnuFile`, `mniSave` |
+| TToolBar | `tlb` | `tlbMain`, `tlbFormat` |
 
-### Diálogos
-| Componente | Prefixo | Exemplos |
+### Dialogs
+| Component | Prefix | Examples |
 |---|---|---|
-| TOpenDialog | `odlg` | `odlgArquivo`, `odlgImagem` |
-| TSaveDialog | `sdlg` | `sdlgRelatorio`, `sdlgExportar` |
-| TColorDialog | `cdlg` | `cdlgCor` |
-| TFontDialog | `fdlg` | `fdlgTexto` |
+| TOpenDialog | `odlg` | `odlgFile`, `odlgImage` |
+| TSaveDialog | `sdlg` | `sdlgReport`, `sdlgExport` |
+| TColorDialog | `cdlg` | `cdlgColor` |
+| TFontDialog | `fdlg` | `fdlgText` |
 
-### Temporização e Comunicação
-| Componente | Prefixo | Exemplos |
+### Timers and Communication
+| Component | Prefix | Examples |
 |---|---|---|
-| TTimer | `tmr` | `tmrAtualizacao`, `tmrSessao` |
+| TTimer | `tmr` | `tmrRefresh`, `tmrSession` |
 | TRESTClient | `rtc` | `rtcAPI`, `rtcIfood` |
-| TRESTRequest | `rtr` | `rtrBuscarPedidos`, `rtrAutenticar` |
-| TRESTResponse | `rsp` | `rspPedidos`, `rspToken` |
+| TRESTRequest | `rtr` | `rtrGetOrders`, `rtrAuthenticate` |
+| TRESTResponse | `rsp` | `rspOrders`, `rspToken` |
 
-### FMX Específico
-| Componente | Prefixo | Exemplos |
+### FMX Specific
+| Component | Prefix | Examples |
 |---|---|---|
-| TForm (FMX) | `frm` | `frmPrincipal`, `frmCadastro` |
-| TTabControl (FMX) | `tbc` | `tbcNavegacao` |
-| TTabItem (FMX) | `tbi` | `tbiHome`, `tbiConfig` |
-| TSwitch (FMX) | `swt` | `swtAtivo`, `swtNotificacao` |
-| TCalendar (FMX) | `cal` | `calDataVencimento` |
+| TForm (FMX) | `frm` | `frmMain`, `frmRegistration` |
+| TTabControl (FMX) | `tbc` | `tbcNavigation` |
+| TTabItem (FMX) | `tbi` | `tbiHome`, `tbiSettings` |
+| TSwitch (FMX) | `swt` | `swtActive`, `swtNotification` |
+| TCalendar (FMX) | `cal` | `calDueDate` |

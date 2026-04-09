@@ -1,42 +1,42 @@
 ---
-description: Scaffold de novo projeto Delphi com estrutura de pastas e arquivos base padronizados
+description: Scaffold a new Delphi project with standardized folder structure and base files
 ---
 
-Crie a estrutura inicial de um novo projeto Delphi seguindo boas práticas de arquitetura.
+Create the initial structure of a new Delphi project following architecture best practices.
 
-**Passo 1 — Levantar requisitos**
+**Step 1 — Gather requirements**
 
-Pergunte ao usuário:
-- Nome do sistema/projeto?
-- Tipo: VCL / FMX / REST API / Library?
-- Banco de dados? Componente de acesso?
-- Arquitetura desejada: simples (Form + DataModule) / camadas (Model, Service, Repository)?
-- Frameworks de terceiros? (ACBr, Horse, FastReport, etc.)
+Ask the user:
+- System/project name?
+- Type: VCL / FMX / REST API / Library?
+- Database? Access component?
+- Desired architecture: simple (Form + DataModule) / layered (Model, Service, Repository)?
+- Third-party frameworks? (ACBr, Horse, FastReport, etc.)
 
-**Passo 2 — Propor estrutura de pastas**
+**Step 2 — Propose folder structure**
 
-Exemplo para projeto em camadas:
+Example for a layered project:
 ```
-NomeProjeto/
+ProjectName/
 ├── src/
-│   ├── model/          # entidades e DTOs
-│   ├── interfaces/     # contratos (IService, IRepository)
-│   ├── service/        # regras de negócio
-│   ├── repository/     # acesso a dados
-│   ├── presentation/   # forms e frames
-│   └── shared/         # utilitários, constantes, exceções
+│   ├── model/          # entities and DTOs
+│   ├── interfaces/     # contracts (IService, IRepository)
+│   ├── service/        # business rules
+│   ├── repository/     # data access
+│   ├── presentation/   # forms and frames
+│   └── shared/         # utilities, constants, exceptions
 ├── tests/              # DUnitX
 ├── docs/
-└── NomeProjeto.dproj
+└── ProjectName.dproj
 ```
 
-**Passo 3 — Gerar arquivos base**
+**Step 3 — Generate base files**
 
-Crie os arquivos iniciais:
-- `NomeProjeto.dpr` — project file limpo
-- Unit de exceções customizadas do domínio
-- Interface base de repositório (ICRUDRepository)
-- DataModule de conexão (se aplicável)
-- Form principal com nomenclatura correta
+Create the initial files:
+- `ProjectName.dpr` — clean project file
+- Custom domain exceptions unit
+- Base repository interface (ICRUDRepository)
+- Connection DataModule (if applicable)
+- Main form with correct naming
 
-Aplique todos os padrões do Delphi Style Guide em cada arquivo gerado.
+Apply all Delphi Style Guide standards in every generated file.

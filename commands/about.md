@@ -1,42 +1,42 @@
 ---
-description: Informações sobre o plugin delphi-dev — autor, versão e recursos
+description: Information about the delphi-dev plugin — author, version, and features
 ---
 
-Exiba as seguintes informações formatadas sobre o plugin delphi-dev:
+Display the following formatted information about the delphi-dev plugin:
 
 **delphi-dev** — Claude Code Plugin
 
-- **Versão:** 1.3.0
-- **Autor:** Adriano Santos
+- **Version:** 1.3.0
+- **Author:** Adriano Santos
 - **Email:** adrianosantospro@gmail.com
 - **GitHub:** https://github.com/adrianosantostreina/delphi-dev
-- **Licença:** MIT © 2026 Adriano Santos
+- **License:** MIT © 2026 Adriano Santos
 
 ---
 
-**O que este plugin faz:**
+**What this plugin does:**
 
-Transforma o Claude em um especialista sênior em Delphi. Ao detectar código Delphi,
-aplica automaticamente o Delphi Style Guide, Clean Code e padrões SOLID — sem precisar ser solicitado.
+Turns Claude into a senior Delphi expert. Upon detecting Delphi code,
+it automatically applies the Delphi Style Guide, Clean Code, and SOLID patterns — without needing to be requested.
 
 ---
 
-**Comandos disponíveis:**
+**Available commands:**
 
-| Comando | Descrição |
+| Command | Description |
 |---|---|
-| `/audit` | Gera laudo técnico profissional completo com score e recomendações |
-| `/review` | Revisão rápida de código — detecta violações e sugere correções |
-| `/write` | Escreve código novo com todos os padrões aplicados automaticamente |
-| `/new-project` | Scaffold de novo projeto com estrutura de pastas padronizada |
-| `/spec` | Cria documento de especificação de software (SPEC) do projeto ou módulo |
-| `/tdd` | Gera suite completa de testes unitários DUnitX para o projeto |
-| `/about` | Exibe estas informações |
+| `/audit` | Generates a complete professional technical audit report with scoring and recommendations |
+| `/review` | Quick code review — detects violations and suggests corrections |
+| `/write` | Writes new code with all standards automatically applied |
+| `/new-project` | Scaffold a new project with standardized folder structure |
+| `/spec` | Creates a software specification document (SPEC) for a project or module |
+| `/tdd` | Generates a complete DUnitX unit test suite for the project |
+| `/about` | Displays this information |
 
 ---
 
-**Baseado em:**
-- Normas e Padronização de Codificação Delphi v4.0.1 — Adriano Santos
-- Código Limpo e Boas Práticas em Delphi — Adriano Santos
+**Based on:**
+- Delphi Coding Standards and Guidelines v4.0.1 — Adriano Santos
+- Clean Code and Best Practices in Delphi — Adriano Santos
 - Clean Code — Robert C. Martin
 - Delphi Style Guide — Embarcadero

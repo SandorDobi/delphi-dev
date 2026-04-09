@@ -1,7 +1,6 @@
 # delphi-dev — Claude Code Plugin
 
-> A Claude Code plugin that turns the assistant into a senior Delphi expert.
-> 🇧🇷 [Leia em Português](README.pt-BR.md)
+> A Delphi development toolkit optimized for AI usage. Turns any AI assistant into a senior Delphi expert.
 
 ---
 
@@ -128,10 +127,10 @@ claude plugin marketplace remove delphi-dev
 |---|---|
 | `delphi-standards` | Auto-activated on Delphi file/code detection |
 | `delphi-write` | Activated when writing new Delphi code |
-| `delphi-laudo` | Activated by the `/audit` command |
+| `delphi-audit` | Activated by the `/audit` command |
 | `delphi-spec` | Activated by the `/spec` command |
-| `delphi-testes` | Activated by the `/tdd` command or automatically after `delphi-write` |
-| `delphi-claudeignore` | Auto-activated on Delphi project detection to optimize token usage |
+| `delphi-tests` | Activated by the `/tdd` command or automatically after `delphi-write` |
+| `delphi-ignore` | Auto-activated on Delphi project detection to optimize token usage |
 
 ---
 
@@ -143,6 +142,22 @@ claude plugin marketplace remove delphi-dev
 | `delphi-writer` | Writes complete, production-ready Delphi code following all standards |
 | `delphi-spec-writer` | Generates the SPEC document from source code analysis |
 | `delphi-tester` | Creates DUnitX unit test suites for Delphi classes |
+
+---
+
+## Factory.ai Droid Harness
+
+This repository includes pre-configured droids for Factory.ai:
+
+| Droid | Purpose |
+|---|---|
+| `delphi-expert` | Auto-activates on Delphi files — applies all coding standards |
+| `delphi-auditor` | Deep technical audit — 8 dimensions, scoring, 17-section report |
+| `delphi-writer` | Writes production-ready Delphi code with all standards applied |
+| `delphi-spec-writer` | Generates SPEC documents from source code analysis |
+| `delphi-tester` | Creates DUnitX unit test suites for Delphi classes |
+
+Droids are located in `.factory/droids/` and are automatically available when using Factory.ai.
 
 ---
 

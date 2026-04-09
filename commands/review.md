@@ -1,39 +1,39 @@
 ---
-description: Revisão rápida de código Delphi — detecta violações de padrão e sugere correções
+description: Quick Delphi code review — detects standard violations and suggests corrections
 ---
 
-Realize uma revisão rápida do código Delphi fornecido pelo usuário.
+Perform a quick review of the Delphi code provided by the user.
 
-Analise e reporte:
+Analyze and report:
 
-**Nomenclatura**
-- Prefixos corretos (F, A, L, C_, T, I, E)?
-- Notação húngara detectada?
-- Nomes significativos ou abreviações obscuras?
-- Componentes renomeados corretamente?
+**Naming**
+- Correct prefixes (F, A, L, C_, T, I, E)?
+- Hungarian notation detected?
+- Meaningful names or obscure abbreviations?
+- Components correctly renamed?
 
-**Formatação**
-- Indentação de 2 espaços (sem TAB)?
-- Margem de 120 chars respeitada?
-- `begin` em linha própria?
-- `else` em linha própria?
+**Formatting**
+- 2-space indentation (no TAB)?
+- 120-char margin respected?
+- `begin` on its own line?
+- `else` on its own line?
 
-**Comandos Proibidos**
-- Uso de `with`?
-- `Break` ou `Continue` em loops?
-- `Exit` fora de guard clause?
-- `Real` como tipo?
-- SQL concatenado (SQL Injection)?
+**Forbidden Statements**
+- Use of `with`?
+- `Break` or `Continue` in loops?
+- `Exit` outside guard clauses?
+- `Real` as a type?
+- Concatenated SQL (SQL Injection)?
 
-**Estrutura**
-- Métodos com mais de 50 linhas?
-- Múltiplas responsabilidades na mesma classe/método?
-- try..finally com múltiplos recursos?
-- `const` em parâmetros de interface?
+**Structure**
+- Methods with more than 50 lines?
+- Multiple responsibilities in the same class/method?
+- try..finally with multiple resources?
+- `const` on interface parameters?
 
-**Formato de saída:**
+**Output format:**
 
-Para cada violação encontrada:
-- Linha aproximada e descrição do problema
-- Classificação: 🚨 CRÍTICO / ⚠️ ATENÇÃO / 💡 SUGESTÃO
-- Exemplo correto de como deveria ser escrito
+For each violation found:
+- Approximate line and problem description
+- Classification: 🚨 CRITICAL / ⚠️ ATTENTION / 💡 SUGGESTION
+- Correct example of how it should be written
