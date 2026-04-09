@@ -1,29 +1,26 @@
 # Project State
 
-**Last Updated:** 2026-04-08
+**Last Updated:** 2026-04-09
 
 ## Current Phase
-- Phase: Localization & Integration
-- Focus: English translation and Factory.ai Droid harness configuration
-- Progress: Complete — all content translated and droids configured
+- Phase: Complete — Repository fully translated, committed, and deployed
+- Focus: All changes committed, forked, and plugin installed globally
 
 ## Last Session
-- Date: 2026-04-08
-- What Done: Translated entire repo from Portuguese to English, created 5 Factory.ai droid configs, renamed directories/files to English, removed Portuguese README
-- See: `docs/Handoffs/handoff-001.md`
+- Date: 2026-04-09
+- What Done: Updated docs/plans/ to English, committed all changes, forked repo to SandorDobi/delphi-dev, pushed to fork, installed plugin globally in Droid
+- Commit: 643247f
 
 ## Next Steps
-1. Commit all changes to git
-2. Update docs/plans/ to reflect English structure (optional)
-3. Test droid invocations in Factory.ai session
+1. Test droid invocations in Factory.ai session
+2. Create a PR from SandorDobi/delphi-dev to adrianosantostreina/delphi-dev if desired
 
 ## Blockers
 - None
 
 ## Decisions Made This Session
-- Embedded key knowledge directly in droid prompts for optimal AI usage
-- Used English equivalents for all Portuguese terminology
-- Maintained dual compatibility (Claude Code plugin format + Factory.ai droid format)
+- Forked repo to SandorDobi/delphi-dev instead of pushing to origin
+- Added fork as Droid marketplace and installed plugin globally with --scope user
 
 ## Files To Know
 - `.factory/droids/` — 5 Factory.ai droid configurations (delphi-expert, delphi-auditor, delphi-writer, delphi-spec-writer, delphi-tester)
